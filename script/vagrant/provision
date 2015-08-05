@@ -7,3 +7,5 @@ sudo apt-get install --yes curl
 sudo apt-get install --yes ack-grep 
 sudo apt-get install --yes zsh 
 sudo apt-get install --yes vim
+sudo apt-get install --yes default-jdk
+sudo apt-get install --yes scala 
