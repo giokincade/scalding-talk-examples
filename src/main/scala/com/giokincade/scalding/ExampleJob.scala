@@ -1,10 +1,10 @@
-package com.twitter.scalding.examples
+package com.giokincade.scalding
 
 import com.twitter.scalding._
 import org.apache.hadoop.util.ToolRunner
 import org.apache.hadoop.conf.Configuration
 
-class WordCountJob(args: Args) extends Job(args) {
+class ExampleJob(args: Args) extends Job(args) {
   TypedPipe.from(TextLine(args("input")))
     .flatMap { line => tokenize(line) }
     .groupBy { word => word } // use each word for a key
@@ -18,7 +18,7 @@ class WordCountJob(args: Args) extends Job(args) {
   }
 }
 
-object WordCountJob {
+object ExampleJob {
   def main(args: Array[String]) {
     ToolRunner.run(new Configuration, new Tool, args);
   }
