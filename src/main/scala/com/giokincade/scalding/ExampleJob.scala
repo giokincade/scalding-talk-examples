@@ -1,21 +1,23 @@
 package com.giokincade.scalding
 
-import com.twitter.scalding._
 import org.apache.hadoop.util.ToolRunner
 import org.apache.hadoop.conf.Configuration
 
-class ExampleJob(args: Args) extends Job(args) {
-  TypedPipe.from(TextLine(args("input")))
-    .flatMap { line => tokenize(line) }
-    .groupBy { word => word } // use each word for a key
-    .size // in each group, get the size
-    .write(TypedTsv[(String, Long)](args("output")))
+import com.twitter.scalding._
 
-  // Split a piece of text into individual words.
-  def tokenize(text: String): Array[String] = {
-    // Lowercase each word and remove punctuation.
-    text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
+class ExampleJob(args: Args) 
+  extends Job(args) {
+  TextLine("data/words.txt")
+    .map('line -> 'first_character) {
+      (line:String) =>
+        line.substring(0,1)
   }
+  .groupBy('first_character) {
+    (g: GroupBuilder) =>
+      g.size('size)
+  }
+  .write(Tsv("data/output/characters.tsv"))
+  
 }
 
 object ExampleJob {
