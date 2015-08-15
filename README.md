@@ -9,14 +9,14 @@ vagrant up
 ```
 This will download the VM image the first time it's run, so that might take a little while.
 
-To SSH into the VM
+To SSH into the VM:
 ```
 vagrant ssh
 ```
 
 You will find this repository at ~/development/host-repo
 
-To stop the VM
+To stop the VM:
 ```
 vagrant halt
 ```
@@ -42,5 +42,5 @@ runMain com.giokincade.scalding.Runner com.giokincade.scalding.ExampleJob --loca
 To run the typed-pipe example:
 
 ```
-runMain com.giokincade.scalding.Runner com.giokincade.scalding.TypedPipeExampleJob -local
+runMain com.giokincade.scalding.Runner com.giokincade.scalding.TypedPipeExampleJob --local
 ```
