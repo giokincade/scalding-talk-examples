@@ -1,4 +1,5 @@
 
+To run the fields-api example:
 ```
-runMain com.giokincade.scalding.ExampleJob com.giokincade.scalding.ExampleJob --local --input "data/input" --output "stuff"
+runMain com.giokincade.scalding.Runner com.giokincade.scalding.ExampleJob --local
 ```
