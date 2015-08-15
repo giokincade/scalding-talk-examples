@@ -10,5 +10,5 @@ class TypedPipeExampleJob(args: Args)
     .map(line => line.substring(0,1)) 
     .groupBy(character => character)
     .size
-    .write(TypedTsv[(String, Long)]("data/output/character.tsv"))
+    .write(TypedTsv[(String, Long)]("data/output/typed-characters.tsv"))
 }

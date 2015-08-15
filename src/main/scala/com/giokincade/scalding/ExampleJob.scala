@@ -13,5 +13,5 @@ class ExampleJob(args: Args)
     (g: GroupBuilder) =>
       g.size('size)
   }
-  .write(Tsv("data/output/characters.tsv"))
+  .write(Tsv("data/output/field-characters.tsv"))
 }
