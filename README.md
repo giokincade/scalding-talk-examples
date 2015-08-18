@@ -36,11 +36,23 @@ First, start sbt:
 To run the fields-api example:
 
 ```
-runMain com.giokincade.scalding.Runner com.giokincade.scalding.ExampleJob --local
+runMain com.twitter.scalding.Tool com.giokincade.scalding.ExampleJob --local
 ```
 
 To run the typed-pipe example:
 
 ```
-runMain com.giokincade.scalding.Runner com.giokincade.scalding.TypedPipeExampleJob --local
+runMain com.twitter.scalding.Tool com.giokincade.scalding.TypedPipeExampleJob --local
 ```
+
+To generate some DOT files:
+```
+runMain com.twitter.scalding.Tool com.giokincade.scalding.TypedPipeExampleJob --hdfs --tool.graph
+```
+
+To turn DOT files into PNGs:
+```
+dot -Tpng com.giokincade.scalding.ExampleJob0_steps.dot -o fields-api-mr-steps.png
+```
+
+

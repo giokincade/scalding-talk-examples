@@ -1,0 +1,21 @@
+digraph G {
+  1 [label = "Hfs['TextDelimited[['first_character', 'size']]']['data/output/field-characters.tsv']"];
+  2 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[IdentityFunction$[decl:[{?}:NONE]]]"];
+  3 [label = "Every('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[MRMAggregator[decl:[{1}:'size']]]"];
+  4 [label = "GroupBy('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[by:['first_character']]"];
+  5 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[CompositeFunction[decl:[{2}:'first_character', '__middlefield__0']]]"];
+  6 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[Identity[decl:[{1}:'first_character']]]"];
+  7 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26')[MapFunction[decl:[{1}:'first_character']]]"];
+  8 [label = "Hfs['TextLine[['offset', 'line']->[ALL]]']['data/words.txt']"];
+  9 [label = "[head]\n2.6.1\nHadoop:"];
+  10 [label = "[tail]"];
+  7 -> 6 [label = "[{3}:'offset', 'line', 'first_character']\n[{3}:'offset', 'line', 'first_character']"];
+  6 -> 5 [label = "[{1}:'first_character']\n[{1}:'first_character']"];
+  5 -> 4 [label = "[{2}:'first_character', '__middlefield__0']\n[{2}:'first_character', '__middlefield__0']"];
+  4 -> 3 [label = "com.twitter.scalding.TextLineWrappedArray(data/words.txt)10fcdd32-3c21-4592-9309-debdf68d4f26[{1}:'first_character']\n[{2}:'first_character', '__middlefield__0']"];
+  3 -> 2 [label = "[{2}:'first_character', 'size']\n[{2}:'first_character', '__middlefield__0']"];
+  9 -> 8 [label = ""];
+  1 -> 10 [label = "[{2}:'first_character', 'size']\n[{2}:'first_character', 'size']"];
+  8 -> 7 [label = "[{2}:'offset', 'line']\n[{2}:'offset', 'line']"];
+  2 -> 1 [label = "[{2}:'first_character', 'size']\n[{2}:'first_character', 'size']"];
+}

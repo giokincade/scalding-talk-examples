@@ -1,0 +1,23 @@
+digraph G {
+  1 [label = "Hfs['TextDelimited[[0:1]]']['data/output/typed-characters.tsv']"];
+  2 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[FlatMapFunction[decl:[{2}:0:1]]]"];
+  3 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[FlatMapFunction[decl:[{1}:0]]]"];
+  4 [label = "Every('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[TypedBufferOp[decl:[{1}:'value']]]"];
+  5 [label = "GroupBy('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[by:['key']]"];
+  6 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[FlatMapFunction[decl:[{2}:'key', 'value']]]"];
+  7 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[MapsideReduce[decl:[{2}:'key', 'value']]]"];
+  8 [label = "Each('com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899')[FlatMapFunction[decl:[{2}:'key', 'value']]]"];
+  9 [label = "Hfs['TextLine[['offset', 'line']->[ALL]]']['data/words.txt']"];
+  10 [label = "[head]\n2.6.1\nHadoop:"];
+  11 [label = "[tail]"];
+  8 -> 7 [label = "[{2}:'key', 'value']\n[{2}:'key', 'value']"];
+  7 -> 6 [label = "[{2}:'key', 'value']\n[{2}:'key', 'value']"];
+  6 -> 5 [label = "[{2}:'key', 'value']\n[{2}:'key', 'value']"];
+  5 -> 4 [label = "com.twitter.scalding.TextLineWrappedArray(data/words.txt)73c20b56-42f2-43c1-9387-a6a3d40ae899[{1}:'key']\n[{2}:'key', 'value']"];
+  4 -> 3 [label = "[{2}:'key', 'value']\n[{2}:'key', 'value']"];
+  3 -> 2 [label = "[{1}:0]\n[{1}:0]"];
+  10 -> 9 [label = ""];
+  1 -> 11 [label = "[{2}:0:1]\n[{2}:0:1]"];
+  9 -> 8 [label = "[{2}:'offset', 'line']\n[{2}:'offset', 'line']"];
+  2 -> 1 [label = "[{2}:0:1]\n[{2}:0:1]"];
+}
